@@ -7,6 +7,7 @@
 //
 import DipApplication
 
+#if os(iOS)
 final class StoryboardsAssembly: BaseCoreAssembly {
     
     /// set in Info.plist !!!
@@ -22,3 +23,22 @@ final class StoryboardsAssembly: BaseCoreAssembly {
         bootstrap()
     }
 }
+
+#elseif os(macOS)
+import Cocoa
+final class StoryboardsAssembly: BaseCoreAssembly {
+    
+    /// set in Info.plist !!!
+    let storyboardTag = "Main"
+    
+    var initialStoryboard: NSStoryboard {
+        return resolve(tag: storyboardTag)
+    }
+    
+    init(withRoot root: RootCoreAssembly, systemInfrastructure: SystemInfrastructureAssembly) {
+        super.init(withRoot: root)
+        container.register(.singleton, tag: storyboardTag) { NSStoryboard(name: NSStoryboard.Name(rawValue: self.storyboardTag), bundle: $0) }
+        bootstrap()
+    }
+}
+#endif

@@ -8,6 +8,7 @@
 
 import DipApplication
 
+#if os(iOS)
 UIApplicationMain(
     CommandLine.argc,
     UnsafeMutableRawPointer(CommandLine.unsafeArgv)
@@ -16,3 +17,11 @@ UIApplicationMain(
     NSStringFromClass(MainApplication.self),
     NSStringFromClass(AppDelegateProxy.self)
 )
+#elseif os(macOS)
+import AppKit
+//NSApplication.shared.delegate = MainAppDelegate()
+_ = NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
+//    NSApp.run()
+#endif
+
+

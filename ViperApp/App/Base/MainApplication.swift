@@ -8,6 +8,7 @@
 
 import DipApplication
 
+@objc(MainApplication)
 class MainApplication: Application {
     override class var factory: AssembliesFactory {
         return MainAssembliesFactory()
