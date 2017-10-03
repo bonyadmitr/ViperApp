@@ -15,6 +15,7 @@ final class DetailViewController: ViperController, StoryboardInstantiatable {
     @IBOutlet private weak var postView: PostView!
     private var post: Post?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         output.viewIsReady()

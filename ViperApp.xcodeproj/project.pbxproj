@@ -47,6 +47,8 @@
 		664BE1771F801C7C00EB3E82 /* Promisable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664BE1761F801C7C00EB3E82 /* Promisable.swift */; };
 		664BE1791F80FEBB00EB3E82 /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664BE1781F80FEBB00EB3E82 /* URLs.swift */; };
 		66716CB91F84065400A07797 /* AppDelegateMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66716C5B1F83F42D00A07797 /* AppDelegateMac.swift */; };
+		66716CD91F8411F300A07797 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66716CD81F8411F300A07797 /* DetailViewController.swift */; };
+		66716CDA1F84125900A07797 /* DetailModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8E74831D34ABD119A8767D /* DetailModuleAssembly.swift */; };
 		668D43F21F7D9C6D00747500 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668D43F11F7D9C6D00747500 /* Post.swift */; };
 		66CC27A11F7C40A000D6EFF2 /* ViperKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66CC27A01F7C40A000D6EFF2 /* ViperKit.framework */; };
 		66DAF0C31F82A7350011536C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DAF0C21F82A7350011536C /* ViewController.swift */; };
@@ -176,6 +178,7 @@
 		664BE1761F801C7C00EB3E82 /* Promisable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promisable.swift; sourceTree = "<group>"; };
 		664BE1781F80FEBB00EB3E82 /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
 		66716C5B1F83F42D00A07797 /* AppDelegateMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateMac.swift; sourceTree = "<group>"; };
+		66716CD81F8411F300A07797 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		668D43F11F7D9C6D00747500 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		669182861F82EF3E001D64A0 /* ViperApp-Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ViperApp-Mac.entitlements"; sourceTree = "<group>"; };
 		66CC27A01F7C40A000D6EFF2 /* ViperKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ViperKit.framework; path = Carthage/Build/iOS/ViperKit.framework; sourceTree = "<group>"; };
@@ -456,6 +459,7 @@
 			children = (
 				669182861F82EF3E001D64A0 /* ViperApp-Mac.entitlements */,
 				66DAF0C21F82A7350011536C /* ViewController.swift */,
+				66716CD81F8411F300A07797 /* DetailViewController.swift */,
 				66DAF0C61F82A7350011536C /* Main.storyboard */,
 				66DAF0C91F82A7350011536C /* Info.plist */,
 				66DAF0CA1F82A7350011536C /* ViperApp_Mac.entitlements */,
@@ -796,6 +800,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66716CDA1F84125900A07797 /* DetailModuleAssembly.swift in Sources */,
 				66DAF0CE1F82A8B60011536C /* main.swift in Sources */,
 				66DAF14D1F82C2D00011536C /* StoragesAssembly.swift in Sources */,
 				66DAF1481F82C2D00011536C /* AppDelegatesAssembly.swift in Sources */,
@@ -844,6 +849,7 @@
 				66DAF0FF1F82A8B60011536C /* PromiseKit.framework in Sources */,
 				66DAF1001F82A8B60011536C /* Realm.framework in Sources */,
 				66DAF14C1F82C2D00011536C /* ClientsAssembly.swift in Sources */,
+				66716CD91F8411F300A07797 /* DetailViewController.swift in Sources */,
 				66DAF1011F82A8B60011536C /* RealmSwift.framework in Sources */,
 				66DAF1021F82A8B60011536C /* SimulatorStatusMagiciOS.framework in Sources */,
 				66DAF1031F82A8B60011536C /* ViperKit.framework in Sources */,

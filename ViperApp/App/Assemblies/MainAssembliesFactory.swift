@@ -17,11 +17,8 @@ final class MainAssembliesFactory: AssembliesFactory {
     
     /// Предназначен для регистрации сборщиков presentation слоя
     override func registerPresentationLayer(root: RootViperAssembly) {
-        
         container.register(.eagerSingleton) { ListModuleAssembly(withCollaborator: $0) }
-        #if os(iOS)
         container.register(.eagerSingleton) { DetailModuleAssembly(withCollaborator: $0) }
-        #endif
     }
     
     /// Предназначен для регистрации сборщиков слоя сервисов

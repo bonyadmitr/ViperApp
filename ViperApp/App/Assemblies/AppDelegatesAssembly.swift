@@ -20,7 +20,6 @@ final class AppDelegatesAssembly: BaseLaunchAssembly {
         super.init(withCollaborator: root)
         
         #if os(iOS)
-            
         container.register { AppDelegate(mainRouter: $0) }
             
         #elseif os(macOS)

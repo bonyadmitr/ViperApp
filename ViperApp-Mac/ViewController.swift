@@ -10,29 +10,60 @@ import Cocoa
 import ViperKit
 import DipUI
 
-class ListViewController: NSViewController {
+class ListViewController: NSViewController, ModuleInputProvider {
     var output: ListViewOutput!
     var moduleInput: ModuleInput!
     
     @IBOutlet private weak var tableView: NSTableView!
     
-    var posts: [Post] = []
+    private var posts: [Post] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         output.viewIsReady()
     }
+    
+    @objc private func onItemClicked() {
+        print("row \(tableView.clickedRow), col \(tableView.clickedColumn) clicked")
+        
+        let post = posts[tableView.clickedRow]
+        output.didSelect(post: post)
+    }
+    
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        guard let configurationBlock = sender as? ConfigurationBlockHolder else {
+            return
+        }
+        guard let controller = segue.destinationController as? ModuleInputProvider else {
+            fatalError("Controller should be Module Input provider")
+        }
+        configurationBlock.block(controller.moduleInput)
+    }
 }
 
 extension ListViewController: StoryboardInstantiatable {}
 
+
+final internal class ConfigurationBlockHolder {
+    typealias ConfigurationHandler = (ModuleInput) -> Void
+    
+    let block: ConfigurationHandler
+    
+    init(block: @escaping ConfigurationHandler) {
+        self.block = block
+    }
+}
 extension ListViewController: TransitionHandler {
     func openModule(segueIdentifier: String) {
         
     }
     
     func openModule(segueIdentifier: String, configurationBlock: @escaping ConfigurationBlock) {
+        performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: segueIdentifier), sender: ConfigurationBlockHolder(block: configurationBlock))
+//        guard let configurationBlock = sender as? ConfigurationBlockHolder else {
+//            return
+//        }
         
     }
     
@@ -43,14 +74,23 @@ extension ListViewController: TransitionHandler {
 
 extension ListViewController: ListViewInput {
     func setupInitialState() {
+        tableView.action = #selector(onItemClicked)
     }
     
     func show(error: Error) {
-        print(error.localizedDescription)
+        let alert = NSAlert()
+        alert.messageText = "Error"
+        alert.informativeText = error.localizedDescription
+        alert.alertStyle = .informational
+        alert.addButton(withTitle: "OK")
+        alert.runModal()
     }
     
     func update(post: Post) {
-        print(post.title)
+        if let i = posts.index(of: post) {
+            posts[i] = post
+            tableView.reloadData(forRowIndexes: IndexSet(integer: i), columnIndexes: IndexSet(integersIn: 0...3))
+        }
     }
     
     func diplay(posts: [Post]) {
@@ -88,6 +128,5 @@ extension ListViewController: NSTableViewDelegate {
         cell.textField?.stringValue = text
         return cell
     }
-    
 }
 

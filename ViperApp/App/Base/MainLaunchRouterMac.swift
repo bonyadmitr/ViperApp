@@ -20,8 +20,8 @@ class MainLaunchRouter: LaunchRouter {
     }
     
     func openInitialModule() {
-        let mainVc = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "www")) as! NSViewController
-        window.window?.contentViewController = mainVc
+//        let mainVc = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "www")) as! NSViewController
+//        window.window?.contentViewController = mainVc
         window.window?.makeKeyAndOrderFront(nil)
     }
 }
